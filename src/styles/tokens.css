@@ -1,4 +1,242 @@
 @import "tailwindcss";
 
 @theme {
+  /* ============================================================
+     LAYER 1 — PRIMITIVES
+     Raw values. No semantic meaning. Named by what they are.
+  ============================================================ */
+
+  /* --- Color: Cream (warm off-whites → warm tans) --- */
+  --color-cream-100: #FFF7E5;          /* confirmed from layout */
+  --color-cream-200: #F5E8CC;          /* TODO: review */
+  --color-cream-300: #EDD9B3;          /* TODO: review */
+  --color-cream-400: #DEC899;          /* TODO: review */
+  --color-cream-500: #C8A87A;          /* TODO: review */
+  --color-cream-600: #A8825D;          /* TODO: review */
+  --color-cream-700: #7D5E3F;          /* TODO: review */
+  --color-cream-800: #503D27;          /* TODO: review */
+  --color-cream-900: #2E2115;          /* TODO: review */
+
+  /* --- Color: Yellow --- */
+  --color-yellow-100: #FFFBDD;         /* TODO: review */
+  --color-yellow-200: #FFF5AA;         /* TODO: review */
+  --color-yellow-300: #FFEC77;         /* TODO: review */
+  --color-yellow-400: #FFE044;         /* TODO: review */
+  --color-yellow-500: #F5CC00;         /* TODO: review */
+  --color-yellow-600: #C8A800;         /* TODO: review */
+  --color-yellow-700: #9B8200;         /* TODO: review */
+  --color-yellow-800: #6E5D00;         /* TODO: review */
+  --color-yellow-900: #4A3F00;         /* TODO: review */
+
+  /* --- Color: Amber --- */
+  --color-amber-100: #FEDEA6;          /* confirmed from layout (blur glow overlay) */
+  --color-amber-200: #FCCD70;          /* TODO: review */
+  --color-amber-300: #F5BA3D;          /* TODO: review */
+  --color-amber-400: #E89A18;          /* TODO: review */
+  --color-amber-500: #C07A0E;          /* TODO: review */
+  --color-amber-600: #955E08;          /* TODO: review */
+  --color-amber-700: #6E4206;          /* TODO: review */
+  --color-amber-800: #4F2F04;          /* TODO: review */
+  --color-amber-900: #311B02;          /* TODO: review */
+
+  /* --- Color: Orange --- */
+  --color-orange-100: #FFE8D6;         /* TODO: review */
+  --color-orange-200: #FFCA99;         /* TODO: review */
+  --color-orange-300: #FFA860;         /* TODO: review */
+  --color-orange-400: #FF8833;         /* TODO: review */
+  --color-orange-500: #E86A00;         /* TODO: review */
+  --color-orange-600: #B85400;         /* TODO: review */
+  --color-orange-700: #8A3E00;         /* TODO: review */
+  --color-orange-800: #5C2A00;         /* TODO: review */
+  --color-orange-900: #3D1A00;         /* TODO: review */
+
+  /* --- Color: Red --- */
+  --color-red-100: #FFE5DC;            /* TODO: review */
+  --color-red-200: #FFC0A8;            /* TODO: review */
+  --color-red-300: #F79076;            /* TODO: review */
+  --color-red-400: #ED5C3D;            /* TODO: review */
+  --color-red-500: #D53918;            /* TODO: review */
+  --color-red-600: #B72912;            /* TODO: review */
+  --color-red-700: #871A0A;            /* TODO: review */
+  --color-red-800: #640F05;            /* TODO: review */
+  --color-red-900: #4C1400;            /* confirmed from layout (phone border stroke) */
+
+  /* --- Color: Ink (near-black warm neutrals) --- */
+  --color-ink-100: #F0ECE8;            /* TODO: review */
+  --color-ink-200: #E1D5CA;            /* TODO: review */
+  --color-ink-300: #CFBBA8;            /* TODO: review */
+  --color-ink-400: #BDA78F;            /* TODO: review */
+  --color-ink-500: #9E8066;            /* TODO: review */
+  --color-ink-600: #7A5E42;            /* TODO: review */
+  --color-ink-700: #573A22;            /* TODO: review */
+  --color-ink-800: #402D18;            /* confirmed from layout (InfoCard border stroke) */
+  --color-ink-900: #1D1107;            /* confirmed from layout (body text on light) */
+
+  /* --- Color: White --- */
+  --color-white: #FFFFFF;              /* confirmed from layout */
+
+  /* --- Typography: Font family --- */
+  --font-family-primary: 'Work Sans', system-ui, sans-serif; /* confirmed from layout */
+
+  /* --- Typography: Font weight --- */
+  --font-weight-light: 300;            /* confirmed from layout */
+  --font-weight-regular: 400;          /* confirmed from layout */
+  --font-weight-medium: 500;           /* schema default — not in layout */
+
+  /* --- Spacing --- */
+  --spacing-1: 4px;                    /* schema default */
+  --spacing-2: 8px;                    /* schema default */
+  --spacing-3: 12px;                   /* confirmed from layout (CTA container gap) */
+  --spacing-4: 16px;                   /* schema default */
+  --spacing-5: 20px;                   /* schema default */
+  --spacing-6: 24px;                   /* schema default */
+  --spacing-7-5: 30px;                 /* confirmed from layout (InfoCardRow gap) */
+  --spacing-8: 32px;                   /* schema default */
+  --spacing-10: 40px;                  /* schema default */
+  --spacing-12: 48px;                  /* schema default */
+  --spacing-16: 64px;                  /* schema default */
+  --spacing-20: 80px;                  /* schema default */
+
+  /* --- Radius --- */
+  --radius-xs: 4px;                    /* schema default */
+  --radius-sm: 8px;                    /* schema default */
+  --radius-md: 16px;                   /* schema default */
+  --radius-lg: 24px;                   /* confirmed from layout (phone frame corner) */
+  --radius-xl: 32px;                   /* schema default */
+  --radius-2xl: 48px;                  /* schema default */
+  --radius-pill: 9999px;               /* schema default */
+
+  /* ============================================================
+     LAYER 2 — TOKENS
+     Decisions. Named by usage. Always reference a Primitive.
+  ============================================================ */
+
+  /* --- Color: Background --- */
+  --color-background-primary: var(--color-cream-100);
+  --color-background-secondary: var(--color-cream-200);
+  --color-background-tertiary: var(--color-cream-300);
+  --color-background-dark: var(--color-ink-900);
+  --color-background-disabled: var(--color-cream-200);
+  --color-background-primary-hover: var(--color-cream-200);
+  --color-background-secondary-hover: var(--color-cream-300);
+  --color-background-accent-primary: var(--color-amber-400);    /* TODO: confirm */
+  --color-background-accent-secondary: var(--color-amber-200);  /* TODO: confirm */
+  --color-background-glow: var(--color-amber-100);              /* blur glow overlay */
+
+  /* --- Color: Text --- */
+  --color-text-primary: var(--color-ink-900);
+  --color-text-secondary: var(--color-ink-600);
+  --color-text-tertiary: var(--color-ink-400);
+  --color-text-on-dark: var(--color-white);
+  --color-text-on-dark-muted: var(--color-cream-100);
+  --color-text-disabled: var(--color-ink-300);
+  --color-text-accent: var(--color-amber-500);                   /* TODO: confirm */
+
+  /* --- Color: Border --- */
+  --color-border-primary: var(--color-ink-900);
+  --color-border-secondary: var(--color-ink-400);
+  --color-border-tertiary: var(--color-ink-200);
+  --color-border-on-dark: var(--color-white);
+  --color-border-disabled: var(--color-ink-200);
+  --color-border-brand: var(--color-ink-800);              /* confirmed from layout (InfoCard border stroke) */
+
+  /* --- Color: Tint (Patina core mechanic) --- */
+  --color-tint-neutral: var(--color-cream-100);
+  --color-tint-yellow: var(--color-yellow-400);                  /* TODO: confirm after ramp approval */
+  --color-tint-amber: var(--color-amber-500);                    /* TODO: confirm after ramp approval */
+  --color-tint-orange: var(--color-orange-500);                  /* TODO: confirm after ramp approval */
+  --color-tint-red: var(--color-red-600);                        /* TODO: confirm after ramp approval */
+
+  /* --- Typography: Heading XL (hero display — screen time timer) --- */
+  /* Desktop: 404px. Mobile override: 112px — apply via responsive utilities */
+  --typography-heading-xl-family: var(--font-family-primary);
+  --typography-heading-xl-weight: var(--font-weight-light);
+  --typography-heading-xl-size: 404px;                           /* confirmed: desktop */
+  --typography-heading-xl-line-height: 1;                        /* confirmed: intrinsic 100% */
+  --typography-heading-xl-letter-spacing: 1.68px;               /* confirmed */
+
+  /* --- Typography: Heading LG (subtitle — tint state label) --- */
+  /* Desktop: 64px. Mobile: TODO */
+  --typography-heading-lg-family: var(--font-family-primary);
+  --typography-heading-lg-weight: var(--font-weight-light);
+  --typography-heading-lg-size: 64px;                            /* confirmed: desktop */
+  --typography-heading-lg-line-height: 74px;                     /* confirmed */
+  --typography-heading-lg-letter-spacing: 1.68px;               /* confirmed */
+
+  /* --- Typography: Heading MD --- */
+  --typography-heading-md-family: var(--font-family-primary);
+  --typography-heading-md-weight: var(--font-weight-light);      /* TODO: confirm */
+  --typography-heading-md-size: 36px;                            /* TODO: review — not in layout */
+  --typography-heading-md-line-height: 44px;                     /* TODO: review */
+  --typography-heading-md-letter-spacing: 1.2px;                 /* TODO: review */
+
+  /* --- Typography: Heading SM --- */
+  --typography-heading-sm-family: var(--font-family-primary);
+  --typography-heading-sm-weight: var(--font-weight-light);      /* TODO: confirm */
+  --typography-heading-sm-size: 28px;                            /* TODO: review — not in layout */
+  --typography-heading-sm-line-height: 36px;                     /* TODO: review */
+  --typography-heading-sm-letter-spacing: 1.0px;                 /* TODO: review */
+
+  /* --- Typography: Body LG (main body / description text) --- */
+  /* Desktop: 22px / 1.1px tracking / 32px lh. Mobile: 16px / 0.8px tracking / 24px lh */
+  --typography-body-lg-family: var(--font-family-primary);
+  --typography-body-lg-weight: var(--font-weight-regular);
+  --typography-body-lg-size: 22px;                               /* confirmed: desktop */
+  --typography-body-lg-line-height: 32px;                        /* confirmed */
+  --typography-body-lg-letter-spacing: 1.1px;                    /* confirmed: desktop */
+
+  /* --- Typography: Body MD --- */
+  --typography-body-md-family: var(--font-family-primary);
+  --typography-body-md-weight: var(--font-weight-regular);
+  --typography-body-md-size: 18px;                               /* TODO: review — not in layout */
+  --typography-body-md-line-height: 28px;                        /* TODO: review */
+  --typography-body-md-letter-spacing: 0.9px;                    /* TODO: review */
+
+  /* --- Typography: Body SM --- */
+  --typography-body-sm-family: var(--font-family-primary);
+  --typography-body-sm-weight: var(--font-weight-regular);
+  --typography-body-sm-size: 14px;                               /* TODO: review — not in layout */
+  --typography-body-sm-line-height: 22px;                        /* TODO: review */
+  --typography-body-sm-letter-spacing: 0.6px;                    /* TODO: review */
+
+  /* --- Typography: Label MD --- */
+  --typography-label-md-family: var(--font-family-primary);
+  --typography-label-md-weight: var(--font-weight-medium);       /* TODO: confirm */
+  --typography-label-md-size: 14px;                              /* TODO: review — not in layout */
+  --typography-label-md-line-height: 20px;                       /* TODO: review */
+  --typography-label-md-letter-spacing: 0.8px;                   /* TODO: review */
+
+  /* --- Typography: Label SM --- */
+  --typography-label-sm-family: var(--font-family-primary);
+  --typography-label-sm-weight: var(--font-weight-medium);       /* TODO: confirm */
+  --typography-label-sm-size: 12px;                              /* TODO: review — not in layout */
+  --typography-label-sm-line-height: 16px;                       /* TODO: review */
+  --typography-label-sm-letter-spacing: 0.6px;                   /* TODO: review */
+
+  /* --- Shadow --- */
+  --shadow-sm: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.30);          /* confirmed: phone contact shadow */
+  --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.12);                /* TODO: review */
+  --shadow-lg: 0px 32px 80px rgba(0, 0, 0, 0.55);               /* confirmed: phone elevation shadow */
+  --shadow-xl: 0px 48px 120px rgba(0, 0, 0, 0.65);              /* TODO: review */
+
+  /* --- Animation: Duration --- */
+  --animation-duration-instant: 0ms;
+  --animation-duration-fast: 150ms;
+  --animation-duration-base: 300ms;
+  --animation-duration-slow: 600ms;
+  --animation-duration-cycle: 18000ms;                           /* tint progression cycle */
+
+  /* --- Animation: Easing --- */
+  --animation-easing-default: cubic-bezier(0.4, 0, 0.6, 1);
+  --animation-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --animation-easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --animation-easing-linear: linear;
 }
+
+/*
+  Mobile typography overrides
+  Desktop values are the @theme baseline above.
+  Apply these at the component level via responsive utilities:
+    - heading/xl: 112px / 1.68px tracking
+    - body/lg:    16px  / 0.8px tracking / 24px line-height
+*/
