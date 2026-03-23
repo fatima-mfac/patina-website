@@ -41,6 +41,23 @@
   background-color: var(--color-background-primary-hover);
 }
 
+.secondaryDark {
+  background-color: transparent;
+  color: var(--color-text-on-dark);
+  border: 1px solid var(--color-border-on-dark);
+}
+
+.secondaryDark:hover:not(:disabled) {
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-primary);
+}
+
+.secondaryDark:disabled {
+  opacity: 1;
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+}
+
 .icon {
   display: flex;
   align-items: center;

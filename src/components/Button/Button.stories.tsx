@@ -7,7 +7,7 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: { layout: 'centered' },
   argTypes: {
-    variant: { control: 'radio', options: ['primary', 'secondary'] },
+    variant: { control: 'radio', options: ['primary', 'secondary', 'secondary-dark'] },
   },
 };
 export default meta;
@@ -43,6 +43,29 @@ export const Disabled: Story = {
     children: 'Get Android App',
     icon: <ArrowForward style={{ color: 'var(--color-text-on-dark)' }} />,
     disabled: true,
+  },
+};
+
+export const SecondaryDark: Story = {
+  args: {
+    variant: 'secondary-dark',
+    children: 'iOS Waitlist',
+    icon: <ArrowForward />,
+  },
+  parameters: {
+    backgrounds: { default: 'dark', values: [{ name: 'dark', value: '#1D1107' }] },
+  },
+};
+
+export const SecondaryDarkDisabled: Story = {
+  args: {
+    variant: 'secondary-dark',
+    children: 'iOS Waitlist',
+    icon: <ArrowForward />,
+    disabled: true,
+  },
+  parameters: {
+    backgrounds: { default: 'dark', values: [{ name: 'dark', value: '#1D1107' }] },
   },
 };
 
